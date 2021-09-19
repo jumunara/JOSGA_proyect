@@ -8,8 +8,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-Edit completo George_quintero;
-
 import static org.junit.Assert.*;
 
 /**
@@ -23,6 +21,7 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.helloworld_Joastian", appContext.getPackageName());
+           assertEquals("com.example.helloworld,Joastian,Julian", appContext.getPackageName());
+
     }
 }
