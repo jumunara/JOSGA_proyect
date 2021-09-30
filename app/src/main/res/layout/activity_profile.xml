@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ESTAS EM LA PANTALLA DE PROFILE"
+        android:text="Funciona el Botón y envía la información a FireBase"
         android:textAlignment="center"
         android:textSize="18sp"/>
 
