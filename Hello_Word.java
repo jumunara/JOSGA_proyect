@@ -22,7 +22,7 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-           assertEquals("com.example.helloworld,Joastian,Julian,Oscar,YesidSanabria", appContext.getPackageName());
+           assertEquals("com.example.helloworld,Joastian,Julian,Oscar", appContext.getPackageName());
 
     }
 }
@@ -52,7 +52,7 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.helloworld,Joastian,Julian123,YesidSanabria", appContext.getPackageName());
+        assertEquals("com.example.helloworld,Joastian,Julian123,", appContext.getPackageName());
     }
 }
 
