@@ -1,8 +1,6 @@
 package com.example.josga;
 
-import static android.os.Build.VERSION_CODES.M;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,6 +51,8 @@ public class MainLoginActivity extends AppCompatActivity {
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
         mButtonRegistrar = (Button) findViewById(R.id.btnregister);
 
+
+
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +74,7 @@ public class MainLoginActivity extends AppCompatActivity {
                     Toast.makeText(MainLoginActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
     }
@@ -84,6 +84,9 @@ public class MainLoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
+                    startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
+                    finish();
 
                     Map<String, Object> map = new HashMap<>();
                     map.put("nombre", nombre);
@@ -96,17 +99,16 @@ public class MainLoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
-                                startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
-                                finish();
+
                             }
                             else{
-                                Toast.makeText(MainLoginActivity.this, "no se pudieron crear los datos corre", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainLoginActivity.this, "Los datos no se cearón correctamente", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 }
                 else{
-                    Toast.makeText(MainLoginActivity.this, "No se pduio registrar este usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainLoginActivity.this, "Ya existe un usuario con este correo", Toast.LENGTH_SHORT).show();
                 }
             }
         });
