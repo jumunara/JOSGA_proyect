@@ -37,6 +37,8 @@ public class MainLoginActivity extends AppCompatActivity {
         FirebaseAuth mAuth;
         DatabaseReference mDatabase;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,7 +52,6 @@ public class MainLoginActivity extends AppCompatActivity {
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
         mButtonRegistrar = (Button) findViewById(R.id.btnregister);
-
 
 
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {

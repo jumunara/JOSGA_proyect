@@ -10,6 +10,17 @@
     tools:context=".MainLoginActivity">
 
 
+    <ImageView
+        android:id="@+id/Logo1"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:rotation="12"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:translationX="10dp"
+        android:translationY="-3dp"
+        app:srcCompat="@mipmap/logo_preview_rev_1" />
+
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
@@ -47,6 +58,7 @@
             android:gravity="center"
             android:text="REGISTRAR"
             android:textColor="@color/white" />
+
     </LinearLayout>
 
 </LinearLayout>
