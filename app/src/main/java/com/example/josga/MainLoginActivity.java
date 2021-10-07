@@ -24,6 +24,7 @@ import java.util.Map;
 
 public class MainLoginActivity extends AppCompatActivity {
 
+
         private EditText mEditTextNombre;
         private EditText mEditTextEmail;
         private EditText mEditTextPassword;
@@ -59,6 +60,7 @@ public class MainLoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
                 if(!nombre.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
 
                     if(password.length() >= 6){
@@ -70,7 +72,10 @@ public class MainLoginActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(MainLoginActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
+
                 }
+
+
             }
         });
 
@@ -94,6 +99,8 @@ public class MainLoginActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(MainLoginActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
 
         });
@@ -105,13 +112,14 @@ public class MainLoginActivity extends AppCompatActivity {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
                     finish();
-                }
-                else{
+                } else {
                     Toast.makeText(MainLoginActivity.this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show();
+
                 }
+
 
             }
         });

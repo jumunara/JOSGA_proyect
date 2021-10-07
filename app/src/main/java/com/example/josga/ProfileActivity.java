@@ -10,6 +10,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        setTheme(R.style.Theme_JOSGA);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
