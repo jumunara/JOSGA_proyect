@@ -28,6 +28,7 @@ public class MainLoginActivity extends AppCompatActivity {
         private EditText mEditTextEmail;
         private EditText mEditTextPassword;
         private Button mButtonRegistrar;
+        private Button mButtonLogin;
 
         //VARIABLES DE DATOS A REGISTRAR
         private String nombre = "";
@@ -52,7 +53,26 @@ public class MainLoginActivity extends AppCompatActivity {
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
         mButtonRegistrar = (Button) findViewById(R.id.btnregister);
+        mButtonLogin = (Button) findViewById(R.id.btnlogin);
 
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                if(!nombre.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+
+                    if(password.length() >= 6){
+                        loginUser();
+                    }
+                    else{
+                        Toast.makeText(MainLoginActivity.this, "El password debe tener 6 caracteres",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(MainLoginActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         mButtonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,14 +100,27 @@ public class MainLoginActivity extends AppCompatActivity {
 
     }
 
+    private void loginUser(){
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(MainLoginActivity.this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
     private void registerUsuer(){
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
-                    startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
-                    finish();
 
                     Map<String, Object> map = new HashMap<>();
                     map.put("nombre", nombre);
@@ -100,10 +133,10 @@ public class MainLoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
-
+                                Toast.makeText(MainLoginActivity.this,"Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                Toast.makeText(MainLoginActivity.this, "Los datos no se cearón correctamente", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainLoginActivity.this, "Los datos no se crearón correctamente", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
