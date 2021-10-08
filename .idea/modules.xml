@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JOSGA_proyect.iml" filepath="$PROJECT_DIR$/JOSGA_proyect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JOSGA.iml" filepath="$PROJECT_DIR$/.idea/modules/JOSGA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JOSGA.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JOSGA.app.iml" />
     </modules>
   </component>
 </project>
