@@ -84,11 +84,10 @@ public class MainLoginActivity extends AppCompatActivity {
                             finish();
                         }
                         else{
-                            Toast.makeText(MainLoginActivity.this, "No se puede iniciar sesión", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainLoginActivity.this, "El usuario no esta registrado", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
             }
         });
 
