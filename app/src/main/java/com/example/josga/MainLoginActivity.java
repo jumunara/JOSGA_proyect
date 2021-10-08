@@ -141,7 +141,7 @@ public class MainLoginActivity extends AppCompatActivity {
                         });
                     }
                     else{
-                        Toast.makeText(MainLoginActivity.this, "Ya existe un usuario con este correo.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainLoginActivity.this, "Ya existe un usuario con este correo", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
