@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#1D3A53"
+    tools:context=".MainLoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="440dp"
+        android:orientation="vertical"
+        android:background="@drawable/bordes_redondos">
+
+        <ImageView
+            android:id="@+id/Logo1"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:translationX="10dp"
+            android:translationY="-3dp"
+            app:srcCompat="@mipmap/logo_preview_rev_1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:orientation="vertical"
+            android:background="@drawable/bordes_redondos"
+            android:backgroundTint="@color/white">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:translationY="15dp">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="318dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#224865"
+                    android:hint="Nombre"
+                    android:textColorHint="#224865"
+                    android:translationX="45dp"
+                    android:textColor="#1D3A53"/>/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:translationY="65dp">
+
+
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="318dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#224865"
+                    android:hint="Password"
+                    android:textColorHint="#224865"
+                    android:translationX="45dp"
+                    android:textColor="#1D3A53"/>/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:translationY="-35dp">
+
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="318dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#224865"
+                    android:hint="Email"
+                    android:textColorHint="#224865"
+                    android:translationX="45dp"
+                    android:textColor="#1D3A53"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordes_redondos"
+            android:translationY="-130dp"
+            android:text="Iniciar Sesión"/>
+        <Button
+            android:id="@+id/btnregister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="#FF9800"
+            android:gravity="center"
+            android:shadowColor="@color/white"
+            android:text="REGISTRAR"
+            android:textColor="@color/white"
+            app:cornerRadius="20dp"
+            android:translationY="-80dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
