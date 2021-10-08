@@ -3,13 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alejo/StudioProjects/JOSGA_proyect/app/src/main/res/drawable/splash_screen.xml" value="0.30512820512820515" />
+        <entry key="..\:/Users/alejo/StudioProjects/JOSGA_proyect/app/src/main/res/layout/activity_main.xml" value="0.21818181061547676" />
         <entry key="..\:/Users/jumun/AndroidStudioProjects/JOSGA_proyect/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/jumun/AndroidStudioProjects/JOSGA_proyect/app/src/main/res/layout/activity_profile.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/os-hv/AndroidStudioProjects/JOSGA_proyect/app/src/main/res/layout/activity_main.xml" value="0.1641337386018237" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
