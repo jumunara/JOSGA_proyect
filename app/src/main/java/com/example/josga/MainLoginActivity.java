@@ -80,7 +80,7 @@ public class MainLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
+                            startActivity(new Intent(MainLoginActivity.this, GameMenu.class));
                             finish();
                         }
                         else{
@@ -147,5 +147,6 @@ public class MainLoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 
