@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_notifications.xml",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\fragment_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_dashboard.xml",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_sala.xml",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\activity_sala.xml"
+    },
+    {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_game_menu.xml",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\activity_game_menu.xml"
+    }
+]

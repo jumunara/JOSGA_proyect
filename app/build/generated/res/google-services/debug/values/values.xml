@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">970194792827-t0kllm4h6coh4a9mb639kchshrf0525a.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">970194792827</string>
+    <string name="google_api_key" translatable="false">AIzaSyBVfC2Basw-qTpKFAjDKtOEKbj44nKYy8Y</string>
+    <string name="google_app_id" translatable="false">1:970194792827:android:09a63bd617df7fefc04dde</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBVfC2Basw-qTpKFAjDKtOEKbj44nKYy8Y</string>
+    <string name="google_storage_bucket" translatable="false">josga-2021.appspot.com</string>
+    <string name="project_id" translatable="false">josga-2021</string>
+</resources>

@@ -1,0 +1,180 @@
+Index: app/src/main/java/com/example/josga/MainLoginActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.josga;\r\n\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.android.gms.tasks.Task;\r\nimport com.google.firebase.auth.AuthResult;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\n\r\npublic class MainLoginActivity extends AppCompatActivity {\r\n\r\n        private EditText mEditTextNombre;\r\n        private EditText mEditTextEmail;\r\n        private EditText mEditTextPassword;\r\n        private Button mButtonRegistrar;\r\n        private Button mButtonLogin;\r\n\r\n        //VARIABLES DE DATOS A REGISTRAR\r\n        private String nombre = \"\";\r\n        private String email = \"\";\r\n        private String password = \"\";\r\n\r\n        FirebaseAuth mAuth;\r\n        DatabaseReference mDatabase;\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        mAuth = FirebaseAuth.getInstance();\r\n        mDatabase = FirebaseDatabase.getInstance().getReference();\r\n\r\n        mEditTextNombre = (EditText) findViewById(R.id.editTextName);\r\n        mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);\r\n        mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);\r\n        mButtonRegistrar = (Button) findViewById(R.id.btnregister);\r\n        mButtonLogin = (Button) findViewById(R.id.btnlogin);\r\n\r\n        mButtonLogin.setOnClickListener(new View.OnClickListener() {\r\n\r\n            @Override\r\n            public void onClick(View view) {\r\n                if(!nombre.isEmpty() && !email.isEmpty() && !password.isEmpty()) {\r\n\r\n                    if(password.length() >= 6){\r\n                        loginUser();\r\n                    }\r\n                    else{\r\n                        Toast.makeText(MainLoginActivity.this, \"El password debe tener 6 caracteres\",Toast.LENGTH_SHORT).show();\r\n                    }\r\n                }\r\n                else{\r\n                    Toast.makeText(MainLoginActivity.this, \"Debe completar los campos\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            }\r\n        });\r\n\r\n        mButtonRegistrar.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                nombre = mEditTextNombre.getText().toString();\r\n                email = mEditTextEmail.getText().toString();\r\n                password = mEditTextPassword.getText().toString();\r\n\r\n\r\n                if(!nombre.isEmpty() && !email.isEmpty() && !password.isEmpty()) {\r\n\r\n                    if(password.length() >= 6){\r\n                        registerUsuer();\r\n                    }\r\n                    else{\r\n                        Toast.makeText(MainLoginActivity.this, \"El password debe tener 6 caracteres\",Toast.LENGTH_SHORT).show();\r\n                    }\r\n                }\r\n                else{\r\n                    Toast.makeText(MainLoginActivity.this, \"Debe completar los campos\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            }\r\n\r\n        });\r\n\r\n    }\r\n\r\n    private void loginUser(){\r\n        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {\r\n\r\n            @Override\r\n            public void onComplete(@NonNull Task<AuthResult> task) {\r\n                if(task.isSuccessful()){\r\n                    startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));\r\n                    finish();\r\n                }\r\n                else{\r\n                    Toast.makeText(MainLoginActivity.this, \"No se pudo iniciar sesión\", Toast.LENGTH_SHORT).show();\r\n                }\r\n\r\n            }\r\n        });\r\n    }\r\n    private void registerUsuer(){\r\n        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {\r\n            @Override\r\n            public void onComplete(@NonNull Task<AuthResult> task) {\r\n                if(task.isSuccessful()){\r\n\r\n                    Map<String, Object> map = new HashMap<>();\r\n                    map.put(\"nombre\", nombre);\r\n                    map.put(\"email\", email);\r\n                    map.put(\"password\", password);\r\n\r\n                    String id = mAuth.getCurrentUser().getUid();\r\n\r\n                    mDatabase.child(\"Users\").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {\r\n                        @Override\r\n                        public void onComplete(@NonNull Task<Void> task2) {\r\n                            if (task2.isSuccessful()){\r\n                                Toast.makeText(MainLoginActivity.this,\"Se ha registrado correctamente\", Toast.LENGTH_SHORT).show();\r\n                            }\r\n                            else{\r\n                                Toast.makeText(MainLoginActivity.this, \"Los datos no se crearón correctamente\", Toast.LENGTH_SHORT).show();\r\n                            }\r\n                        }\r\n                    });\r\n                }\r\n                else{\r\n                    Toast.makeText(MainLoginActivity.this, \"Ya existe un usuario con este correo\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            }\r\n        });\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/josga/MainLoginActivity.java b/app/src/main/java/com/example/josga/MainLoginActivity.java
+--- a/app/src/main/java/com/example/josga/MainLoginActivity.java	
++++ b/app/src/main/java/com/example/josga/MainLoginActivity.java	
+@@ -24,25 +24,22 @@
+ 
+ public class MainLoginActivity extends AppCompatActivity {
+ 
+-        private EditText mEditTextNombre;
+-        private EditText mEditTextEmail;
+-        private EditText mEditTextPassword;
+-        private Button mButtonRegistrar;
+-        private Button mButtonLogin;
++    private EditText mEditTextNombre;
++    private EditText mEditTextEmail;
++    private EditText mEditTextPassword;
++    private Button mButtonRegistrar;
++    private Button mButtonLogin;
+ 
+-        //VARIABLES DE DATOS A REGISTRAR
+-        private String nombre = "";
+-        private String email = "";
+-        private String password = "";
++    //VARIABLES DE DATOS A REGISTRAR
++    private String nombre = "";
++    private String email = "";
++    private String password = "";
+ 
+-        FirebaseAuth mAuth;
+-        DatabaseReference mDatabase;
++    FirebaseAuth mAuth;
++    DatabaseReference mDatabase;
+ 
+-
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+-
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+ 
+@@ -56,21 +53,42 @@
+         mButtonLogin = (Button) findViewById(R.id.btnlogin);
+ 
+         mButtonLogin.setOnClickListener(new View.OnClickListener() {
+-
+             @Override
+-            public void onClick(View view) {
+-                if(!nombre.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
++            public void onClick(View v) {
++                nombre= mEditTextNombre.getText().toString();
++                email = mEditTextEmail.getText().toString();
++                password = mEditTextPassword.getText().toString();
++
++                if (!nombre.isEmpty() && !email.isEmpty() && !password.isEmpty() ){
+ 
+-                    if(password.length() >= 6){
++                    if(password.length() >= 6 ){
+                         loginUser();
+                     }
+                     else{
+-                        Toast.makeText(MainLoginActivity.this, "El password debe tener 6 caracteres",Toast.LENGTH_SHORT).show();
++                        Toast.makeText(MainLoginActivity.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
+                     }
+                 }
+-                else{
++
++                else {
+                     Toast.makeText(MainLoginActivity.this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
+                 }
++
++            }
++
++            private void loginUser(){
++                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
++                    @Override
++                    public void onComplete(@NonNull Task<AuthResult> task) {
++                        if(task.isSuccessful()){
++                            startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
++                            finish();
++                        }
++                        else{
++                            Toast.makeText(MainLoginActivity.this, "No se puede iniciar sesión", Toast.LENGTH_SHORT).show();
++                        }
++                    }
++                });
++
+             }
+         });
+ 
+@@ -96,56 +114,38 @@
+                 }
+             }
+ 
+-        });
+-
+-    }
+ 
+-    private void loginUser(){
+-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+-
+-            @Override
+-            public void onComplete(@NonNull Task<AuthResult> task) {
+-                if(task.isSuccessful()){
+-                    startActivity(new Intent(MainLoginActivity.this, ProfileActivity.class));
+-                    finish();
+-                }
+-                else{
+-                    Toast.makeText(MainLoginActivity.this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT).show();
+-                }
+-
+-            }
+-        });
+-    }
+-    private void registerUsuer(){
+-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+-            @Override
+-            public void onComplete(@NonNull Task<AuthResult> task) {
+-                if(task.isSuccessful()){
++            private void registerUsuer(){
++                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
++                    @Override
++                    public void onComplete(@NonNull Task<AuthResult> task) {
++                        if(task.isSuccessful()){
+ 
+-                    Map<String, Object> map = new HashMap<>();
+-                    map.put("nombre", nombre);
+-                    map.put("email", email);
+-                    map.put("password", password);
++                            Map<String, Object> map = new HashMap<>();
++                            map.put("nombre", nombre);
++                            map.put("email", email);
++                            map.put("password", password);
+ 
+-                    String id = mAuth.getCurrentUser().getUid();
++                            String id = mAuth.getCurrentUser().getUid();
+ 
+-                    mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+-                        @Override
+-                        public void onComplete(@NonNull Task<Void> task2) {
+-                            if (task2.isSuccessful()){
+-                                Toast.makeText(MainLoginActivity.this,"Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
+-                            }
+-                            else{
+-                                Toast.makeText(MainLoginActivity.this, "Los datos no se crearón correctamente", Toast.LENGTH_SHORT).show();
+-                            }
+-                        }
+-                    });
+-                }
+-                else{
+-                    Toast.makeText(MainLoginActivity.this, "Ya existe un usuario con este correo", Toast.LENGTH_SHORT).show();
+-                }
++                            mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
++                                @Override
++                                public void onComplete(@NonNull Task<Void> task2) {
++                                    if (task2.isSuccessful()){
++                                        Toast.makeText(MainLoginActivity.this,"Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
++                                    }
++                                    else{
++                                        Toast.makeText(MainLoginActivity.this, "Los datos no se crearón correctamente", Toast.LENGTH_SHORT).show();
++                                    }
++                                }
++                            });
++                        }
++                        else{
++                            Toast.makeText(MainLoginActivity.this, "Ya existe un usuario con este correo", Toast.LENGTH_SHORT).show();
++                        }
++                    }
++                });
+             }
+         });
+     }
+ }
+-
