@@ -10,15 +10,40 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Random;
 
 public class Sala extends AppCompatActivity {
 
+    private TextView Codigo;
+    private Button Refresh;
+
     ImageView image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sala);
+
+
+        Refresh = (Button) findViewById(R.id.Refreshcode);
+        Codigo = (TextView) findViewById(R.id.CodigoDeSala);
+
+        Refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random ramdom = new Random();
+                int NUMERO = ramdom.nextInt(999999);
+                    Codigo.setText(Integer.toString(NUMERO));
+            }
+        });
+
 
         image = (ImageView) findViewById(R.id.ruleta);
         image.setOnTouchListener(new View.OnTouchListener() {
@@ -29,11 +54,8 @@ public class Sala extends AppCompatActivity {
                         GirarRuleta(image);
                         break;
                 }
-
                 return true;
-
             }
-
         });
 
     }
