@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970194792827",
+    "project_id": "josga-2021",
+    "storage_bucket": "josga-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970194792827:android:09a63bd617df7fefc04dde",
+        "android_client_info": {
+          "package_name": "com.example.josga"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970194792827-t0kllm4h6coh4a9mb639kchshrf0525a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVfC2Basw-qTpKFAjDKtOEKbj44nKYy8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970194792827-t0kllm4h6coh4a9mb639kchshrf0525a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
