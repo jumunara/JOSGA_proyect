@@ -52,7 +52,7 @@ public class MainLoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        database = FirebaseDatabase.getInstance();
+        //database = FirebaseDatabase.getInstance();
 
         mEditTextNombre = (EditText) findViewById(R.id.editTextName);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);

@@ -2,6 +2,7 @@ package com.example.josga;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
-public class Sala extends AppCompatActivity {
+public class Sala extends Fragment {
 
     private TextView Codigo;
     private Button Refresh;
