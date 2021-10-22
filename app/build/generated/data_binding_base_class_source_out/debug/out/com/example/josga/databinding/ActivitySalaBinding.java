@@ -29,35 +29,27 @@ public final class ActivitySalaBinding implements ViewBinding {
   public final Button Refreshcode;
 
   @NonNull
-  public final Button btnGirar;
+  public final Button button;
 
   @NonNull
   public final ConstraintLayout constraintLayout4;
 
   @NonNull
-  public final ConstraintLayout constraintLayout5;
-
-  @NonNull
   public final ImageView ruleta;
-
-  @NonNull
-  public final ImageView selecter;
 
   @NonNull
   public final TextView textView2;
 
   private ActivitySalaBinding(@NonNull LinearLayout rootView, @NonNull TextView CodigoDeSala,
-      @NonNull Button Refreshcode, @NonNull Button btnGirar,
-      @NonNull ConstraintLayout constraintLayout4, @NonNull ConstraintLayout constraintLayout5,
-      @NonNull ImageView ruleta, @NonNull ImageView selecter, @NonNull TextView textView2) {
+      @NonNull Button Refreshcode, @NonNull Button button,
+      @NonNull ConstraintLayout constraintLayout4, @NonNull ImageView ruleta,
+      @NonNull TextView textView2) {
     this.rootView = rootView;
     this.CodigoDeSala = CodigoDeSala;
     this.Refreshcode = Refreshcode;
-    this.btnGirar = btnGirar;
+    this.button = button;
     this.constraintLayout4 = constraintLayout4;
-    this.constraintLayout5 = constraintLayout5;
     this.ruleta = ruleta;
-    this.selecter = selecter;
     this.textView2 = textView2;
   }
 
@@ -100,9 +92,9 @@ public final class ActivitySalaBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnGirar;
-      Button btnGirar = ViewBindings.findChildViewById(rootView, id);
-      if (btnGirar == null) {
+      id = R.id.button;
+      Button button = ViewBindings.findChildViewById(rootView, id);
+      if (button == null) {
         break missingId;
       }
 
@@ -112,21 +104,9 @@ public final class ActivitySalaBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.constraintLayout5;
-      ConstraintLayout constraintLayout5 = ViewBindings.findChildViewById(rootView, id);
-      if (constraintLayout5 == null) {
-        break missingId;
-      }
-
       id = R.id.ruleta;
       ImageView ruleta = ViewBindings.findChildViewById(rootView, id);
       if (ruleta == null) {
-        break missingId;
-      }
-
-      id = R.id.selecter;
-      ImageView selecter = ViewBindings.findChildViewById(rootView, id);
-      if (selecter == null) {
         break missingId;
       }
 
@@ -136,8 +116,8 @@ public final class ActivitySalaBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySalaBinding((LinearLayout) rootView, CodigoDeSala, Refreshcode, btnGirar,
-          constraintLayout4, constraintLayout5, ruleta, selecter, textView2);
+      return new ActivitySalaBinding((LinearLayout) rootView, CodigoDeSala, Refreshcode, button,
+          constraintLayout4, ruleta, textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

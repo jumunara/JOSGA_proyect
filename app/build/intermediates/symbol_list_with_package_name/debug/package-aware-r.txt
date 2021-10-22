@@ -1871,7 +1871,6 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_notifications_black_24dp
 drawable logo_preview_rev_1
-drawable magen2
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1908,7 +1907,6 @@ drawable notify_panel_notification_icon_bg
 drawable personas
 drawable rojo
 drawable ruleta
-drawable selecte
 drawable splash_screen
 drawable test_custom_background
 drawable tooltip_frame_dark
@@ -2024,9 +2022,9 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
-id btnGirar
 id btnlogin
 id btnregister
+id button
 id buttonCrearSala
 id buttonPanel
 id cache_measures
@@ -2172,6 +2170,7 @@ id line3
 id linear
 id linearLayout
 id listMode
+id listView
 id list_item
 id masked
 id match_constraint
@@ -2307,7 +2306,6 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id selected
-id selecter
 id selection_type
 id sharedValueSet
 id sharedValueUnset

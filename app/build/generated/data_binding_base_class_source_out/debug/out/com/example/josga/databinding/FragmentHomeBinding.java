@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,19 +19,28 @@ import java.lang.String;
 
 public final class FragmentHomeBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
   public final Button buttonCrearSala;
 
-  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonCrearSala) {
+  @NonNull
+  public final ConstraintLayout constraintLayout5;
+
+  @NonNull
+  public final ListView listView;
+
+  private FragmentHomeBinding(@NonNull RelativeLayout rootView, @NonNull Button buttonCrearSala,
+      @NonNull ConstraintLayout constraintLayout5, @NonNull ListView listView) {
     this.rootView = rootView;
     this.buttonCrearSala = buttonCrearSala;
+    this.constraintLayout5 = constraintLayout5;
+    this.listView = listView;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -60,7 +71,20 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentHomeBinding((ConstraintLayout) rootView, buttonCrearSala);
+      id = R.id.constraintLayout5;
+      ConstraintLayout constraintLayout5 = ViewBindings.findChildViewById(rootView, id);
+      if (constraintLayout5 == null) {
+        break missingId;
+      }
+
+      id = R.id.listView;
+      ListView listView = ViewBindings.findChildViewById(rootView, id);
+      if (listView == null) {
+        break missingId;
+      }
+
+      return new FragmentHomeBinding((RelativeLayout) rootView, buttonCrearSala, constraintLayout5,
+          listView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

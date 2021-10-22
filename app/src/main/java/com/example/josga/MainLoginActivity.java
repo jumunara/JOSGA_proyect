@@ -2,6 +2,7 @@ package com.example.josga;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,12 +35,15 @@ public class MainLoginActivity extends AppCompatActivity {
     private Button mButtonLogin;
 
     //VARIABLES DE DATOS A REGISTRAR
-    private String nombre = "";
+    String nombre = "";
     private String email = "";
     private String password = "";
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
+
+    FirebaseDatabase database;
+    DatabaseReference PlayerRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +52,24 @@ public class MainLoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance();
 
         mEditTextNombre = (EditText) findViewById(R.id.editTextName);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
         mButtonRegistrar = (Button) findViewById(R.id.btnregister);
         mButtonLogin = (Button) findViewById(R.id.btnlogin);
+
+
+        //Verificacion si el jugador existe
+        /*SharedPreferences preferences = getSharedPreferences("PREPS", 0);
+        nombre = preferences.getString("playerName", "");*/
+
+        /*if (!nombre.equals("")){
+            PlayerRef = database.getReference("players/" + nombre);
+            addEventListener();
+            PlayerRef.setValue("");
+        }*/
 
 
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +167,27 @@ public class MainLoginActivity extends AppCompatActivity {
             }
         });
     }
+    /*private void addEventListener(){
+       //Lectura de la base de datos
+       PlayerRef.addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if (!nombre.equals("")){
+                    SharedPreferences preferences = getSharedPreferences("PREPS", 0);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("nombre", nombre);
+                    editor.apply();
 
+                    startActivity(new Intent(getApplicationContext(), MainLoginActivity.class));
+                    finish();
+               }
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+
+           }
+       });
+    }*/
 }
 

@@ -3,19 +3,22 @@ package com.example.josga;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.opengl.GLSurfaceView;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
 import android.view.View;
-import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
@@ -23,6 +26,15 @@ public class Sala extends AppCompatActivity {
 
     private TextView Codigo;
     private Button Refresh;
+    Button button;
+
+    String nombre = "";
+    String RoomName = "";
+    String role = "";
+    String mensage = "";
+
+    FirebaseDatabase database;
+    DatabaseReference mensageRef;
 
     ImageView image;
 
@@ -31,9 +43,41 @@ public class Sala extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sala);
 
-
+        button = (Button) findViewById(R.id.button);
+        button.setEnabled(false);
         Refresh = (Button) findViewById(R.id.Refreshcode);
         Codigo = (TextView) findViewById(R.id.CodigoDeSala);
+
+        database = FirebaseDatabase.getInstance();
+
+        SharedPreferences preferences = getSharedPreferences("PREPS", 0);
+        nombre = preferences.getString("PlayerName", "");
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            RoomName = extras.getString("nombre de la sala");
+            if (RoomName.equals(nombre)){
+                role = "host";
+            } else{
+                role = "quest";
+            }
+        }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Enviar mensaje
+                button.setEnabled(false);
+                mensage = role + ":Empacado!";
+                mensageRef.setValue(mensage);
+            }
+        });
+
+        //Mensaje entrante
+        mensageRef = database.getReference("salas/" + RoomName + "/mensage");
+        mensage = role + "Empacado!";
+        mensageRef.setValue(mensage);
+        addRoomEventListener();
 
         Refresh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +104,33 @@ public class Sala extends AppCompatActivity {
 
     }
 
+    private void addRoomEventListener (){
+        mensageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                //Mensaje resivido
+                if(role.equals("host")){
+                    if(datasnapshot.getValue(String.class).contains("guest:")){
+                        button.setEnabled(true);
+                        Toast.makeText(Sala.this, "" +
+                                datasnapshot.getValue(String.class).replace("guest:", ""), Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    if(datasnapshot.getValue(String.class).contains("host:")){
+                        button.setEnabled(true);
+                        Toast.makeText(Sala.this, "" +
+                                datasnapshot.getValue(String.class).replace("host:", ""), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError dataerror) {
+                //ERROR - Reintentar
+                mensageRef.setValue(mensage);
+            }
+        });
+    }
     private void GirarRuleta(ImageView image) {
         RotateAnimation Animacion = new RotateAnimation(0,570,RotateAnimation.RELATIVE_TO_SELF, 0.5f,
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f);
@@ -68,5 +139,7 @@ public class Sala extends AppCompatActivity {
         image.startAnimation(Animacion);
 
     }
+
+
 
 }

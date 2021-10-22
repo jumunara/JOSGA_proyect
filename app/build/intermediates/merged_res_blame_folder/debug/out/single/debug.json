@@ -128,20 +128,12 @@
         "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\drawable_selecte.png.flat",
-        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\drawable\\selecte.png"
-    },
-    {
         "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_logo_preview_rev_1.png.flat",
         "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\mipmap-hdpi\\logo_preview_rev_1.png"
-    },
-    {
-        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\drawable_magen2.png.flat",
-        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\drawable\\magen2.png"
     },
     {
         "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_notifications.xml.flat",
