@@ -16,32 +16,34 @@ com/example/josga/ui/dashboard/DashboardFragment.java
  com.example.josga.ui.dashboard.DashboardFragment$1
 com/example/josga/databinding/FragmentDashboardBinding.java
  com.example.josga.databinding.FragmentDashboardBinding
+com/example/josga/GameMenu.java
+ com.example.josga.GameMenu
+com/example/josga/ui/home/HomeFragment.java
+ com.example.josga.ui.home.HomeFragment
+ com.example.josga.ui.home.HomeFragment$1
+com/example/josga/databinding/ActivityMainBinding.java
+ com.example.josga.databinding.ActivityMainBinding
+com/example/josga/ui/home/HomeViewModel.java
+ com.example.josga.ui.home.HomeViewModel
+com/example/josga/ui/notifications/NotificationsViewModel.java
+ com.example.josga.ui.notifications.NotificationsViewModel
 com/example/josga/Sala.java
  com.example.josga.Sala
  com.example.josga.Sala$1
  com.example.josga.Sala$2
  com.example.josga.Sala$3
  com.example.josga.Sala$4
-com/example/josga/databinding/ActivityMainBinding.java
- com.example.josga.databinding.ActivityMainBinding
-com/example/josga/ui/notifications/NotificationsViewModel.java
- com.example.josga.ui.notifications.NotificationsViewModel
-com/example/josga/ui/home/HomeViewModel.java
- com.example.josga.ui.home.HomeViewModel
 com/example/josga/ui/dashboard/DashboardViewModel.java
  com.example.josga.ui.dashboard.DashboardViewModel
+com/example/josga/databinding/ActivityMenuBinding.java
+ com.example.josga.databinding.ActivityMenuBinding
+com/example/josga/Menu.java
+ com.example.josga.Menu
+ com.example.josga.Menu$1
+ com.example.josga.Menu$2
+ com.example.josga.Menu$3
+ com.example.josga.Menu$4
 com/example/josga/MainLoginActivity.java
  com.example.josga.MainLoginActivity
  com.example.josga.MainLoginActivity$1
- com.example.josga.MainLoginActivity$1$1
  com.example.josga.MainLoginActivity$2
- com.example.josga.MainLoginActivity$2$1
- com.example.josga.MainLoginActivity$2$1$1
-com/example/josga/ui/home/HomeFragment.java
- com.example.josga.ui.home.HomeFragment
- com.example.josga.ui.home.HomeFragment$1
- com.example.josga.ui.home.HomeFragment$2
- com.example.josga.ui.home.HomeFragment$3
- com.example.josga.ui.home.HomeFragment$4
-com/example/josga/GameMenu.java
- com.example.josga.GameMenu

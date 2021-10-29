@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JOSGA">
         <activity
+            android:name=".Menu"
+            android:exported="true" />
+        <activity
             android:name=".GameMenu"
             android:exported="true"
             android:label="@string/title_activity_game_menu" />

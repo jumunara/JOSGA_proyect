@@ -64,6 +64,10 @@
         "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_menu.xml.flat",
+        "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\layout\\activity_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\build\\intermediates\\merged_res\\debug\\drawable_bordes_redondos.xml.flat",
         "source": "C:\\Users\\alejo\\StudioProjects\\JOSGA_proyect\\app\\src\\main\\res\\drawable\\bordes_redondos.xml"
     },

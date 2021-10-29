@@ -2492,6 +2492,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_game_menu
 layout activity_main
+layout activity_menu
 layout activity_sala
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row

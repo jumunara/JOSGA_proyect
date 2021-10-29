@@ -2,7 +2,6 @@ package com.example.josga;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
-public class Sala extends Fragment {
+public class Sala extends AppCompatActivity {
 
     private TextView Codigo;
     private Button Refresh;
@@ -44,7 +43,7 @@ public class Sala extends Fragment {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sala);
 
-        button = (Button) findViewById(R.id.button);
+        button = findViewById(R.id.button);
         button.setEnabled(false);
         Refresh = (Button) findViewById(R.id.Refreshcode);
         Codigo = (TextView) findViewById(R.id.CodigoDeSala);

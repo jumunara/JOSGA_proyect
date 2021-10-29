@@ -31,65 +31,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends AppCompatActivity {
+public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
-    android.widget.ListView listView;
-    Button button;
-
-    String nombre = "";
-    String RoomName = "";
-
-    FirebaseDatabase database;
-    DatabaseReference RoomRef;
-    DatabaseReference RoomsRef;
-
-    List<String> RoomsList;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        database = FirebaseDatabase.getInstance();
-
-        SharedPreferences preferences = getSharedPreferences("PREPS", 0);
-        nombre = preferences.getString("PlayerName", "");
-        RoomName = nombre;
-
-        listView = findViewById(R.id.listView);
-        button = findViewById(R.id.buttonCrearSala);
-
-        RoomsList = new ArrayList<>();
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Cracion de la sala y agregarse uno mismo como jugador
-                button.setText("Crando Sala");
-                button.setEnabled(false);
-                RoomName = nombre;
-                RoomRef = database.getReference("sala/" + RoomName + "/player1");
-                addRoomEventListener();
-                RoomRef.setValue(nombre);
-            }
-        });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //Unirse a la sala y unirse como jugador 2
-                RoomName = RoomsList.get(position);
-                RoomRef = database.getReference("sala/" + RoomName + "/player2");
-                addRoomEventListener();
-                RoomRef.setValue(nombre);
-            }
-        });
-        //Mostrar si la sala esta disponible
-        addRoomEventListener();
-    }
-
-    /*public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -102,10 +49,10 @@ public class HomeFragment extends AppCompatActivity {
         //Inflación de Layout en este fragmento, para tener acciones de botones,etc, o llamadas a pantallas
         //Logica de inicializacion
         return inflater.inflate(R.layout.fragment_home, container, false);
-    }*/
+    }
 
         //Logica de la cración de los componentes
-    /*@Override
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -118,55 +65,11 @@ public class HomeFragment extends AppCompatActivity {
                 Navigation.findNavController(v).navigate(R.id.Sala);
             }
         });
-    }*/
-
-    private void addRoomEventListener(){
-        RoomRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                button.setText("Crear Sala");
-                button.setEnabled(true);
-                Intent intent = new Intent(getApplicationContext(), MainLoginActivity.class);
-                intent.putExtra("Nombre de la sala", RoomName);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError dataerror) {
-                //ERROR
-                button.setText("Crear Sala");
-                button.setEnabled(true);
-                Toast.makeText(HomeFragment.this, "ERROR", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    private void addRoomsEventListener(){
-        RoomsRef = database.getReference("Salasas");
-        RoomsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                //Mostrar lista de las salas
-                RoomsList.clear();
-                Iterable<DataSnapshot> rooms = datasnapshot.getChildren();
-                for (DataSnapshot snapshot : rooms){
-                    RoomsList.add(snapshot.getKey());
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeFragment.this,
-                            android.R.layout.simple_list_item_1, RoomsList);
-                    listView.setAdapter(adapter);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError dataerror) {
-                //ERROR- NADA
-            }
-        });
-    }
-    /*@Override
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }*/
+    }
 }

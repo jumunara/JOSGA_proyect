@@ -50,7 +50,38 @@ public class MainLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
+        mEditTextNombre = findViewById(R.id.editTextName);
+        mButtonLogin = findViewById(R.id.btnlogin);
+
+        database = FirebaseDatabase.getInstance();
+
+        //Verificacion si el jugador existe
+        SharedPreferences preferences = getSharedPreferences("PREPS", 0);
+        nombre = preferences.getString("playerName", "");
+
+        if (!nombre.equals("")) {
+            PlayerRef = database.getReference("Users/" + nombre);
+            addEventListener();
+            PlayerRef.setValue("");
+        }
+
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               nombre = mEditTextNombre.getText().toString();
+               mEditTextNombre.setText("");
+               if (!nombre.equals("")){
+                   mButtonLogin.setText("Logging in");
+                   mButtonLogin.setEnabled(false);
+                   PlayerRef = database.getReference("Users/" + nombre);
+                   addEventListener();
+                   PlayerRef.setValue("");
+               }
+            }
+            });
+
+
+        /*mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //database = FirebaseDatabase.getInstance();
 
@@ -72,7 +103,7 @@ public class MainLoginActivity extends AppCompatActivity {
         }*/
 
 
-        mButtonLogin.setOnClickListener(new View.OnClickListener() {
+        /*mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nombre= mEditTextNombre.getText().toString();
@@ -100,7 +131,7 @@ public class MainLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(MainLoginActivity.this, GameMenu.class));
+                            startActivity(new Intent(MainLoginActivity.this, Menu.class));
                             finish();
                         }
                         else{
@@ -165,9 +196,9 @@ public class MainLoginActivity extends AppCompatActivity {
                 }
             });
             }
-        });
+        });*/
     }
-    /*private void addEventListener(){
+    private void addEventListener(){
        //Lectura de la base de datos
        PlayerRef.addValueEventListener(new ValueEventListener() {
            @Override
@@ -178,16 +209,18 @@ public class MainLoginActivity extends AppCompatActivity {
                     editor.putString("nombre", nombre);
                     editor.apply();
 
-                    startActivity(new Intent(getApplicationContext(), MainLoginActivity.class));
+                    startActivity(new Intent(getApplicationContext(), Menu.class));
                     finish();
                }
            }
 
            @Override
            public void onCancelled(@NonNull DatabaseError error) {
-
+               mButtonLogin.setText("Log in");
+               mButtonLogin.setEnabled(true);
+               Toast.makeText(MainLoginActivity.this, "ERROR!", Toast.LENGTH_SHORT).show();
            }
        });
-    }*/
+    }
 }
 
